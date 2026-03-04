@@ -1,0 +1,1 @@
+{"version":3,"file":"add-skill.d.ts","sourceRoot":"","sources":["../../src/commands/add-skill.ts"],"names":[],"mappings":"AAQA,OAAO,EAA2C,KAAK,aAAa,EAAE,MAAM,iCAAiC,CAAC;AAG9G,UAAU,eAAe;IACrB,QAAQ,CAAC,EAAE,aAAa,CAAC;IACzB,WAAW,CAAC,EAAE,MAAM,CAAC;CACxB;AAED,wBAAsB,eAAe,CAAC,IAAI,EAAE,MAAM,EAAE,OAAO,EAAE,eAAe,GAAG,OAAO,CAAC,IAAI,CAAC,CA2F3F"}

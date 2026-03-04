@@ -16,8 +16,7 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/cli.js",
-    "lint": "tsc --noEmit",
-    "prepare": "npm run build"
+    "lint": "tsc --noEmit"
   },
   "keywords": [
     "claude",
