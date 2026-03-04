@@ -1,0 +1,44 @@
+{
+  "name": "claude-kit",
+  "version": "1.0.0",
+  "description": "CLI toolkit for managing Claude Code configurations (skills, hooks, MCP, commands, rules)",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "claude-kit": "dist/cli.js"
+  },
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "lint": "tsc --noEmit",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "mcp",
+    "hooks",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "glob": "^11.0.0",
+    "inquirer": "^9.3.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
