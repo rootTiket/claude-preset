@@ -7,6 +7,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { ensureDir, writeFile } from '../utils/file-ops.js';
 import { generateClaudeMd } from '../templates/claude-md.js';
+import { getSkillTemplate, type SkillTemplate } from '../templates/skill-templates.js';
 import { logger } from '../utils/logger.js';
 
 interface InitOptions {
@@ -88,6 +89,35 @@ export async function initCommand(options: InitOptions): Promise<void> {
         ensureDir(path.join(claudeDir, dir));
     }
     logger.success('Created .claude/ directory structure');
+
+    // Create default skill templates
+    const defaultSkills: Array<{ name: string; template: SkillTemplate; description: string }> = [
+        {
+            name: 'feature',
+            template: 'feature',
+            description: 'New feature development workflow. Use when adding new functionality. Analyzes requirements, plans implementation, writes code, and verifies.',
+        },
+        {
+            name: 'fix',
+            template: 'fix',
+            description: 'Bug fix workflow. Use when something is broken or behaving unexpectedly. Reproduces, diagnoses, fixes, and verifies.',
+        },
+        {
+            name: 'docs',
+            template: 'docs',
+            description: 'Documentation workflow. Use when creating or updating README, API docs, JSDoc/TSDoc, or any project documentation.',
+        },
+    ];
+
+    for (const skill of defaultSkills) {
+        const skillDir = path.join(claudeDir, 'skills', skill.name);
+        ensureDir(skillDir);
+        const content = getSkillTemplate(skill.template, {
+            name: skill.name,
+            description: skill.description,
+        });
+        writeFile(path.join(skillDir, 'SKILL.md'), content);
+    }
 
     // Create settings.json
     const settingsPath = path.join(claudeDir, 'settings.json');
